@@ -41,7 +41,8 @@ var (
 )
 
 func InitView() (mainBox *gtk.VBox) {
-	Log.Info("系统类型: %s", commonCtrl.GetSystemType())
+	commonCtrl.GetSystemType()
+	Log.Info("系统类型: %s", commonCtrl.SysType)
 	// mainBox
 	mainBox = gtk.NewVBox(false, 1)
 	mainBox.ShowAll()
@@ -677,8 +678,7 @@ func SortNameActionView(vBox *gtk.VBox)  {
 		comboBoxEntry.AppendText(item)
 	}
 	comboBoxEntry.SetActive(0)
-	hBox.PackStart(comboBoxEntry,false,false,5)
-
+	hBox.PackStart(comboBoxEntry,false,false,0)
 
 	// 排序按钮
 	sortBtnImg := gtk.NewImageFromStock(gtk.STOCK_SELECT_ALL, 1)
@@ -702,7 +702,7 @@ func SortNameActionView(vBox *gtk.VBox)  {
 		sortFileCtrl.SortType = comboBoxEntry.GetActive()
 		sortFileCtrl.Sort()
 	})
-	hBox.PackStart(sortBtn, false,false,120)
+	hBox.PackStart(sortBtn, false,false,135)
 
 	// 添加hbox
 	vBox.PackStart(hBox, false, false, 5)
@@ -721,7 +721,7 @@ func SortNameTableView(vBox *gtk.VBox)  {
 	// 设置存储
 	treeview.SetModel(store)
 	treeview.GetSelection().SetMode(gtk.SELECTION_SINGLE)
-	nameColumn := gtk.NewTreeViewColumnWithAttributes("文件名", gtk.NewCellRendererText(), "text", 0)
+	nameColumn := gtk.NewTreeViewColumnWithAttributes("文件名(递归扫描)", gtk.NewCellRendererText(), "text", 0)
 	treeview.AppendColumn(nameColumn)
 	scrollWin.Add(treeview)
 	// 选中

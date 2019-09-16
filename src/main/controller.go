@@ -45,15 +45,29 @@ type CommonControl struct {
 	// 退出信号
 	ExitSignal chan bool
 
+	SysType string
+
 }
 
-func (c *CommonControl) GetSystemType() string {
-	sysType := runtime.GOOS
-	return sysType
+func (c *CommonControl) GetSystemType() {
+	c.SysType = runtime.GOOS
+}
+
+func (c *CommonControl) fileRecursiveFile (dirPath string) {
+	files, err := ioutil.ReadDir(dirPath)
+	if err == nil {
+		for _, f := range files {
+			if f.IsDir() {
+				fullPath := T.ConcatFilePath(c.SysType, dirPath, f.Name())
+				c.fileRecursiveFile(fullPath)
+			} else {
+				c.SortTabSrcFileList = append(c.SortTabSrcFileList, T.ConcatFilePath(c.SysType, dirPath, f.Name()))
+			}
+		}
+	}
 }
 
 func (c *CommonControl) ReloadSrcFileList () {
-	sysType := c.GetSystemType()
 	c.SrcFileList = []map[string]map[string]bool{}
 	c.SortTabSrcFileList = []string{}
 	// 读入该目录下的文件
@@ -61,19 +75,17 @@ func (c *CommonControl) ReloadSrcFileList () {
 	files, err := ioutil.ReadDir(c.Workspace)
 	if err == nil {
 		for _, f := range files {
+			if f.IsDir() {
+				c.fileRecursiveFile(T.ConcatFilePath(c.SysType, c.Workspace, f.Name()))
+				continue
+			}
 			tmpMap := map[string]map[string]bool{
 				f.Name(): {
 					"status": false,
 				},
 			}
 			c.SrcFileList = append(c.SrcFileList, tmpMap)
-			switch sysType {
-			case "darwin":
-				c.SortTabSrcFileList = append(c.SortTabSrcFileList, fmt.Sprintf("%s/%s",c.Workspace, f.Name()))
-				break
-			case "windows":
-				c.SortTabSrcFileList = append(c.SortTabSrcFileList, fmt.Sprintf("%s\\%s",c.Workspace, f.Name()))
-			}
+			c.SortTabSrcFileList = append(c.SortTabSrcFileList, T.ConcatFilePath(c.SysType, c.Workspace, f.Name()))
 		}
 	}
 	//fmt.Println(this.SrcFileList)
@@ -246,6 +258,7 @@ func (s *SortFileNameControl) Sort () {
 		fileInfo, err := os.Stat(file)
 		if err != nil {
 			Log.Error("获取文件状态失败, err: %v", err)
+			continue
 		}
 		stat := fileInfo.Sys().(*syscall.Stat_t)
 		Log.Info(file)
@@ -263,7 +276,7 @@ func (s *SortFileNameControl) OpenFile (filePath string) error {
 	var (
 		cmd *exec.Cmd
 		err error
-		sysType = s.CControl.GetSystemType()
+		sysType = s.CControl.SysType
 	)
 	Log.Info("打开文件: %s", filePath)
 	switch sysType {
@@ -290,7 +303,7 @@ func (s *SortFileNameControl) OpenDir (filePath string) error {
 	var (
 		cmd *exec.Cmd
 		err error
-		sysType = s.CControl.GetSystemType()
+		sysType = s.CControl.SysType
 	)
 	dirPath := filepath.Dir(filePath)
 	Log.Info("打开文件目录: %s", dirPath)
