@@ -1,0 +1,60 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "vhI3tzO5WLWc6ZHmjxR00g5nkPU=",
+			"path": "github.com/astaxie/beego/logs",
+			"revision": "8395a26061497e76ca577fd23836bd7c51e01b84",
+			"revisionTime": "2019-09-08T16:46:36Z"
+		},
+		{
+			"checksumSHA1": "+rupQ63zIqJiFI38xyxmli7rzAA=",
+			"path": "github.com/mattn/go-gtk/gdk",
+			"revision": "4deadb416788be678fb9cac22ea76dba83c946b0",
+			"revisionTime": "2019-04-05T07:25:24Z"
+		},
+		{
+			"checksumSHA1": "4EFr/ytIga7kUxEWQ6Fm1flxDeQ=",
+			"path": "github.com/mattn/go-gtk/gdkpixbuf",
+			"revision": "4deadb416788be678fb9cac22ea76dba83c946b0",
+			"revisionTime": "2019-04-05T07:25:24Z"
+		},
+		{
+			"checksumSHA1": "CTZwAHp/If1GEw7fnDcaMD6cbSk=",
+			"path": "github.com/mattn/go-gtk/gio",
+			"revision": "4deadb416788be678fb9cac22ea76dba83c946b0",
+			"revisionTime": "2019-04-05T07:25:24Z"
+		},
+		{
+			"checksumSHA1": "xo5L4awJDBwNMCIfhEJr/9kR5wQ=",
+			"path": "github.com/mattn/go-gtk/glib",
+			"revision": "4deadb416788be678fb9cac22ea76dba83c946b0",
+			"revisionTime": "2019-04-05T07:25:24Z"
+		},
+		{
+			"checksumSHA1": "h5StMqFuPCeXlyl6WiXp5kbPRxw=",
+			"path": "github.com/mattn/go-gtk/gtk",
+			"revision": "4deadb416788be678fb9cac22ea76dba83c946b0",
+			"revisionTime": "2019-04-05T07:25:24Z"
+		},
+		{
+			"checksumSHA1": "WkYgbvicCqhy2PiIPv/nz/gEbyw=",
+			"path": "github.com/mattn/go-gtk/pango",
+			"revision": "4deadb416788be678fb9cac22ea76dba83c946b0",
+			"revisionTime": "2019-04-05T07:25:24Z"
+		},
+		{
+			"checksumSHA1": "hk7HSP8WLSaP2zGkTdTvCC08Iz0=",
+			"path": "github.com/mattn/go-pointer",
+			"revision": "49522c3f37914a12a6813caf41f4a9e84d39ca0a",
+			"revisionTime": "2018-08-25T12:46:34Z"
+		},
+		{
+			"checksumSHA1": "v5CCEZdC63TIkIL8TUeURBcZzNc=",
+			"path": "github.com/shiena/ansicolor",
+			"revision": "a422bbe96644373c5753384a59d678f7d261ff10",
+			"revisionTime": "2015-11-19T15:19:21Z"
+		}
+	]
+}
