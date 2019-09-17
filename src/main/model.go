@@ -10,7 +10,7 @@ const Version = "v1.0.0"
 const CopyRight = "@Created by Golang GTK"
 const AuthorName = "Shadow-YD"
 // wechat pay
-const WeChatPayImg = "/Users/liangyedong/Desktop/workspace/go/bb_desktop_tool/src/main/wechat.jpg"
+const WeChatPayImg = "./wechat.jpg"
 // 主体窗口size
 const MainBoxWidth = 700
 const MainBoxHeight = 690
