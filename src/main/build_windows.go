@@ -2,6 +2,7 @@
 package main
 
 import (
+	"os"
 	"time"
 	"fmt"
 	"strconv"
@@ -34,7 +35,7 @@ func HandleTime (fileInfo os.FileInfo, latestDay int, sortType int) bool {
 	case 2:
 		second := fileSys.CreationTime.Nanoseconds()/1e9
 		if second > latestTime.Unix() {
-			Log.Info(fmt.Sprintf("排序类型: [创建时间] %d > %d", T.TimespecToTime(stat.Ctimespec).Unix(), latestTime.Unix()))
+			Log.Info(fmt.Sprintf("排序类型: [创建时间] %d > %d", second, latestTime.Unix()))
 			return true
 		}
 		break
