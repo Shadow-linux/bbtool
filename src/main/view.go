@@ -337,7 +337,7 @@ func fixedChangeNameTabView (tabFixedBox *gtk.Fixed)  {
 	changeNameHBox.PackStart(changeNameInput,false,false,5)
 	// 提示
 	changeNameTipsLabel = gtk.NewLabel("description")
-	cnTipsMarkup := "<span foreground='red' font_desc='11'>* 命名规则: [改名: aa] -> [过程: 1.txt => aa_1.txt] </span>"
+	cnTipsMarkup := "<span foreground='red' font_desc='10'>* [改名: aa] -> [过程: 1.txt => aa_1.txt]</span>"
 	changeNameTipsLabel.SetMarkup(cnTipsMarkup)
 	changeNameHBox.PackStart(changeNameTipsLabel,false,false,5)
 	// [control]
