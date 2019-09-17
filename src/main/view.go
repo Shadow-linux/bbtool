@@ -103,7 +103,15 @@ func MenuBarView(menubar *gtk.MenuBar) {
 
 		vBox := gtk.NewVBox(true, 1)
 
-		codeImage := gtk.NewImageFromFile(WeChatPayImg)
+		var codeImage *gtk.Image
+		switch commonCtrl.SysType {
+		case "darwin":
+			codeImage = gtk.NewImageFromFile(LinuxWeChatPayImg)
+			break
+		case "windows":
+			codeImage = gtk.NewImageFromFile(WindowsChatPayImg)
+			break
+		}
 		vBox.Add(codeImage)
 		vBox.ShowAll()
 		// 添加框内的对象
