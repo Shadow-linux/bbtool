@@ -385,7 +385,7 @@ func fixedChangeNameTabView (tabFixedBox *gtk.Fixed)  {
 
 	// PS，代码优先级判断描述
 	descPriorityLabel := gtk.NewLabel("description")
-	markup := "<span foreground='red' font_desc='11'>执行优先级:  匹配替换 > 排序改名  > 添加前缀</span>"
+	markup := "<span foreground='red' font_desc='10'>执行优先级:  匹配替换 > 排序改名  > 添加前缀</span>"
 	descPriorityLabel.SetMarkup(markup)
 	tabFixedBox.Put(descPriorityLabel, 20, 525)
 	tabFixedBox.Add(descPriorityLabel)
