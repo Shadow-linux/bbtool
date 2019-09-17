@@ -249,7 +249,7 @@ func (s *SortFileNameControl) OpenFile (filePath string) error {
 		cmd = exec.Command("open", filePath)
 		cmd.Stdout = os.Stdout
 	case "windows":
-		cmd = exec.Command("start", filePath)
+		cmd = exec.Command("cmd","/k", "start", filePath)
 		cmd.Stdout = os.Stdout
 	default:
 		return err
@@ -277,7 +277,7 @@ func (s *SortFileNameControl) OpenDir (filePath string) error {
 		cmd = exec.Command("open", dirPath)
 		cmd.Stdout = os.Stdout
 	case "windows":
-		cmd = exec.Command("start", filePath)
+		cmd = exec.Command("cmd","/k", "start", dirPath)
 		cmd.Stdout = os.Stdout
 	default:
 		return err
