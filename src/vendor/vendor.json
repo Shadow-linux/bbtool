@@ -3,6 +3,12 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "hs6PSdhjTQSbQhBLZwuiN/Pg9Fk=",
+			"path": "github.com/akavel/rsrc",
+			"revision": "b9f6b78f792dc3dddaf295854d968f5b6fdcdba1",
+			"revisionTime": "2019-03-03T07:55:59Z"
+		},
+		{
 			"checksumSHA1": "vhI3tzO5WLWc6ZHmjxR00g5nkPU=",
 			"path": "github.com/astaxie/beego/logs",
 			"revision": "8395a26061497e76ca577fd23836bd7c51e01b84",
