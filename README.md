@@ -17,10 +17,12 @@
 #### Example
 
 * Mac 
+
 ![noCqyD.png](https://s2.ax1x.com/2019/09/17/noCqyD.png)
 ![noCbQO.png](https://s2.ax1x.com/2019/09/17/noCbQO.png)
     
 * Windows
+
 ![noAB8I.png](https://s2.ax1x.com/2019/09/17/noAB8I.png)
     
 #### Author
