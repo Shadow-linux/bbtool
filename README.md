@@ -14,6 +14,10 @@
 #### Necessary
 * go get github.com/mattn/go-gtk
 
+#### Download
+
+* https://github.com/Shadow-linux/bbtool/releases/tag/v1.0
+
 #### Example
 
 * Mac 
