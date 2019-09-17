@@ -7,8 +7,6 @@ import (
 	"strings"
 	"strconv"
 	"os"
-	"time"
-	"syscall"
 	"runtime"
 	"os/exec"
 	"path/filepath"
@@ -221,35 +219,7 @@ type SortFileNameControl struct {
 	CControl *CommonControl
 }
 
-func (s *SortFileNameControl) handleTime (stat *syscall.Stat_t) bool {
-	nowTime := time.Now()
-	strTime, _ := time.ParseDuration(fmt.Sprintf("-%sh", strconv.Itoa(s.LatestDays * 24)))
-	latestTime := nowTime.Add(strTime)
-	switch s.SortType {
-	// 修改时间
-	case 0:
-		if T.TimespecToTime(stat.Mtimespec).Unix() > latestTime.Unix() {
-			Log.Info(fmt.Sprintf("排序类型: [修改时间] %d > %d", T.TimespecToTime(stat.Mtimespec).Unix(), latestTime.Unix()))
-			return true
-		}
-		break
-	// 访问时间
-	case 1:
-		if T.TimespecToTime(stat.Atimespec).Unix() > latestTime.Unix() {
-			Log.Info(fmt.Sprintf("排序类型: [访问时间] %d > %d", T.TimespecToTime(stat.Atimespec).Unix(), latestTime.Unix()))
-			return true
-		}
-		break
-	// 创建时间
-	case 2:
-		if T.TimespecToTime(stat.Ctimespec).Unix() > latestTime.Unix() {
-			Log.Info(fmt.Sprintf("排序类型: [创建时间] %d > %d", T.TimespecToTime(stat.Ctimespec).Unix(), latestTime.Unix()))
-			return true
-		}
-		break
-	}
-	return false
-}
+
 
 func (s *SortFileNameControl) Sort () {
 	Log.Info("进行文件排序操作, 最近 %d 天", s.LatestDays)
@@ -260,12 +230,7 @@ func (s *SortFileNameControl) Sort () {
 			Log.Error("获取文件状态失败, err: %v", err)
 			continue
 		}
-		stat := fileInfo.Sys().(*syscall.Stat_t)
-		Log.Info(file)
-		Log.Info(fmt.Sprintf("访问时间: %v", T.TimespecToTime(stat.Atimespec)))
-		Log.Info(fmt.Sprintf("创建时间: %v", T.TimespecToTime(stat.Ctimespec)))
-		Log.Info(fmt.Sprintf("修改时间: %v", T.TimespecToTime(stat.Mtimespec)))
-		if s.handleTime(stat) {
+		if HandleTime(fileInfo, s.LatestDays, s.SortType) {
 			s.CControl.SortTabTargetFileList = append(s.CControl.SortTabTargetFileList, file)
 		}
 	}
