@@ -13,7 +13,7 @@ func HandleTime (fileInfo os.FileInfo, latestDay int, sortType int) bool {
 	nowTime := time.Now()
 	strTime, _ := time.ParseDuration(fmt.Sprintf("-%sh", strconv.Itoa(latestDay * 24)))
 	latestTime := nowTime.Add(strTime)
-	fileSys := fileInfo.Sys()
+	fileSys := fileInfo.Sys().(*syscall.Win32FileAttributeData)
 	Log.Info(fileInfo.Name())
 	switch sortType {
 	// 修改时间
